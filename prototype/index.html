@@ -23,15 +23,16 @@
   }
   h2 { margin-top: 0; }
   p { color: #b9c4da; }
-  select, button {
+  label { display: block; margin-top: 14px; }
+  input, select, button {
     box-sizing: border-box;
     width: 100%;
     padding: 12px;
-    margin-top: 10px;
+    margin-top: 8px;
     border-radius: 9px;
     font-size: 16px;
   }
-  select {
+  input, select {
     background: #111827;
     color: white;
     border: 1px solid #65718c;
@@ -41,14 +42,29 @@
     color: white;
     border: 0;
     font-weight: bold;
+    cursor: pointer;
   }
   #status { margin-top: 16px; font-size: 14px; }
+  .description { font-size: 13px; }
 </style>
 </head>
 <body>
   <main class="menu">
     <h2>Hide n Seek</h2>
-    <p>Private lobby settings prototype</p>
+    <p>Private lobby settings</p>
+
+    <label for="lobbyCode">Lobby code</label>
+    <input
+      id="lobbyCode"
+      type="text"
+      placeholder="Enter lobby code"
+      maxlength="10"
+      autocomplete="off"
+      autocapitalize="characters"
+    >
+    <p class="description">
+      Enter the lobby code to connect and configure more seekers.
+    </p>
 
     <label for="count">Seeker count</label>
     <select id="count">
@@ -57,22 +73,39 @@
       <option value="3">3 Seekers</option>
     </select>
 
-    <button id="apply">Save Setting</button>
-    <p id="status">Local prototype — not connected to the game.</p>
+    <button id="apply">Save Settings</button>
+    <p id="status" role="status" aria-live="polite">
+      Local prototype — not connected to the game.
+    </p>
   </main>
 
 <script>
   const count = document.getElementById("count");
+  const lobbyCode = document.getElementById("lobbyCode");
   const status = document.getElementById("status");
 
   count.value = localStorage.getItem("seekerCount") || "1";
+  lobbyCode.value = localStorage.getItem("lobbyCode") || "";
+
+  lobbyCode.addEventListener("input", () => {
+    lobbyCode.value = lobbyCode.value.toUpperCase();
+  });
 
   document.getElementById("apply").onclick = () => {
+    const code = lobbyCode.value.trim();
+
+    if (!code) {
+      status.textContent = "Please enter a lobby code.";
+      return;
+    }
+
+    localStorage.setItem("lobbyCode", code);
     localStorage.setItem("seekerCount", count.value);
+
     status.textContent =
-      `Saved: ${count.value} seeker(s). Game integration not connected.`;
+      `Saved: ${count.value} seeker(s). Lobby code saved. ` +
+      "Game integration not connected.";
   };
 </script>
 </body>
 </html>
-
