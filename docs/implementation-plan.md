@@ -13,6 +13,20 @@ Current status
 - [ ] Implement game integration
 - [ ] Test seeker assignment in private lobbies
 
+Framework evaluation
+
+Status: Research in progress.
+
+Requirements:
+
+- Android ARM64 compatibility
+- Compatibility with the installed Among Us version
+- Support for Hide n Seek role assignment
+- Private-lobby testing
+- Documented build and installation steps
+
+No framework has been verified against the target game build yet.
+
 Planned menu
 
 - Seeker Count: 1, 2, or 3
