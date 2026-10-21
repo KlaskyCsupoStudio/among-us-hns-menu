@@ -3,24 +3,20 @@
 build/
 **/build/
 
-# Android local configuration
+# Android
 local.properties
-
-# Generated APK files
 *.apk
 *.aab
-
-# Signing keys
 *.jks
 *.keystore
 
-# Local configuration and secrets
+# Secrets
 .env
 
 # Python cache
 __pycache__/
 *.py[cod]
 
-# Editor files
+# IDE
 .idea/
 *.iml
