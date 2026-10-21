@@ -4,47 +4,65 @@ Goal
 
 Create a configurable seeker-count setting for Among Us Hide n Seek on Android.
 
-Current status
+Target game: Among Us Android 19.0.0 (Influencer Update)
+
+Current Status
 
 - [x] HTML menu prototype
 - [x] Local seeker-count configuration prototype
 - [x] Source files uploaded to GitHub
+- [x] Implementation plan documented
 - [ ] Identify a compatible modding framework
+- [ ] Verify Android ARM64 and game-version compatibility
 - [ ] Implement game integration
-- [ ] Test seeker assignment in private lobbies
+- [ ] Test seeker assignment in compatible private lobbies
 
-Framework evaluation
+Framework Evaluation
 
 Status: Research in progress.
 
 Requirements:
 
-- Android ARM64 compatibility
-- Compatibility with the installed Among Us version
-- Support for Hide n Seek role assignment
-- Private-lobby testing
-- Documented build and installation steps
-
-No framework has been verified against the target game build yet.
-
-Planned menu
-
-- Seeker Count: 1, 2, or 3
-- Default value: 1
-- Apply the selected setting before a round starts
-
-Game integration requirements
-
-- Compatible game version and Android architecture
+- Android ARM64 support
+- Compatibility with Among Us Android 19.0.0
 - Access to Hide n Seek role-assignment logic
-- Validation against the number of players
-- Consistent host and client state
+- Multiplayer synchronization support
 - Private-lobby testing
+- Documented source code, build, and installation instructions
 
-Important limitation
+No framework has yet been verified to support the complete target feature.
 
-The current prototype does not modify the game or change multiplayer role assignment. Compatibility with Among Us Android v19 has not been verified.
+Planned Menu
 
-Development rule
+- Setting: Seeker Count
+- Options: 1, 2, or 3
+- Default: 1
+- Apply the selected setting before the round starts
+- Validate the selection against the number of eligible players
 
-Use documented, compatible modding tools. Do not assume a generic Android floating menu can change the game's internal logic.
+Game Integration Requirements
+
+1. Identify a compatible, documented modding framework.
+2. Determine how the framework exposes Hide n Seek role assignment.
+3. Apply the selected seeker count during round initialization.
+4. Ensure the host and participating clients use consistent settings.
+5. Test role assignment in compatible private lobbies.
+
+Important Limitations
+
+The current HTML and Python prototypes do not modify Among Us or change multiplayer role assignment.
+
+Compatibility with the target game version and any proposed framework remains unverified.
+
+A local menu setting alone cannot change the actual number of seekers.
+
+Development Rules
+
+- Prefer documented source code and reproducible builds.
+- Verify game-version and architecture compatibility before implementation.
+- Do not distribute modified game files without checking applicable permissions.
+- Test gameplay changes only in compatible private environments.
+
+Next Milestone
+
+Identify and verify a source-based Android modding framework compatible with Among Us 19.0.0 before beginning game integration.
