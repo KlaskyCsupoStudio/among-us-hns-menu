@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hide n Seek Menu</title>
+<style>
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    background: #10131c;
+    color: white;
+    font-family: system-ui, sans-serif;
+  }
+  .menu {
+    width: min(320px, 85vw);
+    padding: 22px;
+    background: #202638;
+    border: 1px solid #46516e;
+    border-radius: 18px;
+  }
+  h2 { margin-top: 0; }
+  p { color: #b9c4da; }
+  select, button {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 9px;
+    font-size: 16px;
+  }
+  select {
+    background: #111827;
+    color: white;
+    border: 1px solid #65718c;
+  }
+  button {
+    background: #e64b55;
+    color: white;
+    border: 0;
+    font-weight: bold;
+  }
+  #status { margin-top: 16px; font-size: 14px; }
+</style>
+</head>
+<body>
+  <main class="menu">
+    <h2>Hide n Seek</h2>
+    <p>Private lobby settings prototype</p>
+
+    <label for="count">Seeker count</label>
+    <select id="count">
+      <option value="1">1 Seeker</option>
+      <option value="2">2 Seekers</option>
+      <option value="3">3 Seekers</option>
+    </select>
+
+    <button id="apply">Save Setting</button>
+    <p id="status">Local prototype — not connected to the game.</p>
+  </main>
+
+<script>
+  const count = document.getElementById("count");
+  const status = document.getElementById("status");
+
+  count.value = localStorage.getItem("seekerCount") || "1";
+
+  document.getElementById("apply").onclick = () => {
+    localStorage.setItem("seekerCount", count.value);
+    status.textContent =
+      `Saved: ${count.value} seeker(s). Game integration not connected.`;
+  };
+</script>
+</body>
+</html>
+
