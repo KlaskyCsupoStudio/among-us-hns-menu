@@ -38,6 +38,11 @@ public class MainActivity extends Activity {
         });
 
         setContentView(webView);
+        SettingsRepository repository = new SettingsRepository(this);
+        webView.addJavascriptInterface(
+        new SettingsBridge(repository),
+        "AndroidSettings"
+        );
         webView.loadUrl(
             "https://appassets.androidplatform.net/assets/index.html"
         );
